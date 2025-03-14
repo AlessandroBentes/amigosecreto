@@ -1,7 +1,8 @@
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
 let listaDeAmigosSecretos = [];
-let numeroLimite = 5;
-//let amigoSecreto = SortearAmigoSecreto();
+let listaDeAmigosSorteados = [];
+let resultado = document.getElementById('resultado');
+let listaDeAmigosNaTela = document.getElementById("listaAmigos");
 document.getElementById("botaosortear").setAttribute('disabled','false');
 
 function adicionarAmigo() 
@@ -29,6 +30,7 @@ function adicionarAmigo()
     habilitarBotao('botaosortear', listaDeAmigosSecretos);
 }
 
+//Habilitar Botao Sotear somente apos haver mais de 2 amigos na lista
 function habilitarBotao(tagId, lista)
 {
     if (lista.length > 2) 
@@ -46,7 +48,7 @@ function limparCampo(tagId)
 
 function exibirAmigosNaTela(tag, lista) 
 {
-     let listaDeAmigosNaTela = document.getElementById("listaAmigos");
+     
      listaDeAmigosNaTela.innerHTML = "";
 
      for(let i = 0; i < lista.length; i++)
@@ -58,10 +60,35 @@ function exibirAmigosNaTela(tag, lista)
 
 }
 
+function limparAmigos()
+{
+   listaDeAmigosSecretos = [];
+   listaDeAmigosSecretos.length = 0;
+   listaDeAmigosSorteados = [];
+   listaDeAmigosSorteados.length = 0;
+   listaDeAmigosNaTela.innerHTML = "";
+   listaDeAmigosNaTela.length = 0;
+   resultado.innerHTML = "";
+
+}
+
 function sortearAmigo()
 {
    let amigoSorteado = listaDeAmigosSecretos[Math.floor(Math.random()* listaDeAmigosSecretos.length)];
-   let resultado = document.getElementById('resultado');
-   resultado.innerHTML = `O amigo secreto sorteado foi: ${amigoSorteado}`;
-
+      
+   if (listaDeAmigosSorteados.length == listaDeAmigosSecretos.length) 
+      {
+        resultado.innerHTML = `Todos os amigos secretos foram sorteados!!!`;
+      } else { if (listaDeAmigosSorteados.includes(amigoSorteado))
+                 {
+                   alert(`O amigo(a) ${amigoSorteado} já foi sorteado(a)!!!`);
+                   return;
+                 } else {
+                          listaDeAmigosSorteados.push(amigoSorteado);
+                          resultado.innerHTML = `O amigo secreto sorteado foi: ${amigoSorteado}`;
+                          //console.log(`Amigo Sorteado ${listaDeAmigosSorteados.length} -> ${listaDeAmigosSorteados[listaDeAmigosSorteados.length-1]}`);
+                        }
+             }
 }
+
+
