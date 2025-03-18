@@ -81,8 +81,9 @@ function sortearAmigo()
         resultado.innerHTML = `Todos os amigos secretos foram sorteados!!!`;
       } else { if (listaDeAmigosSorteados.includes(amigoSorteado))
                  {
-                   alert(`O amigo(a) ${amigoSorteado} já foi sorteado(a)!!!`);
-                   return;
+                   sortearAmigo();
+                   //resultado.innerHTML = `O amigo(a) ${amigoSorteado} já foi sorteado(a)!!!  Favor sortear novamente!!!`;
+                   //return;
                  } else {
                           listaDeAmigosSorteados.push(amigoSorteado);
                           resultado.innerHTML = `O amigo secreto sorteado foi: ${amigoSorteado}`;
