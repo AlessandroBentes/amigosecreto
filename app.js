@@ -3,7 +3,7 @@ let listaDeAmigosSecretos = [];
 let listaDeAmigosSorteados = [];
 let resultado = document.getElementById('resultado');
 let listaDeAmigosNaTela = document.getElementById("listaAmigos");
-document.getElementById("botaosortear").setAttribute('disabled','false');
+document.getElementById("botaosortear").setAttribute('disabled','true');
 
 function adicionarAmigo() 
 {
@@ -69,7 +69,7 @@ function limparAmigos()
    listaDeAmigosNaTela.innerHTML = "";
    listaDeAmigosNaTela.length = 0;
    resultado.innerHTML = "";
-
+   document.getElementById("botaosortear").setAttribute('disabled','false');
 }
 
 function sortearAmigo()
